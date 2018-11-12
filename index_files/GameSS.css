@@ -29,8 +29,8 @@ ul {
         text-decoration: none;
         color: black;
         padding: 10px;
-        display: inline-block;
         width: 200px;
+        display: inline-block;
     }
 
         ul a:hover {
@@ -43,7 +43,9 @@ ul {
         background-color: #96031A;
         padding: 10px;
         color: #FBFFFE;
-        border:none;
+        border: none;
+        display: inline-block;
+        width: 200px;
     }
 
         ul button:hover {
