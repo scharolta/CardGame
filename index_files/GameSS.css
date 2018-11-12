@@ -1,0 +1,88 @@
+﻿body {
+    margin: .5em;
+    font-family: 'Roboto', sans-serif;
+    background-color: #FBFFFE;
+    color: #1B1B1E;
+}
+
+h1 {
+    text-align: center;
+    margin: .5em 0;
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    color: #96031A;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+    ul li {
+        display: inline;
+    }
+
+    ul a {
+        border: 1px solid black;
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        display: inline-block;
+        width: 200px;
+    }
+
+        ul a:hover {
+            background-color: #FAA916;
+            text-decoration: none;
+            color: #FBFFFE;
+        }
+
+    ul button {
+        background-color: #96031A;
+        padding: 10px;
+        color: #FBFFFE;
+        border:none;
+    }
+
+        ul button:hover {
+            background-color: #FAA916;
+            color: #FBFFFE;
+            border: none;
+        }
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+    main div.column {
+        float: left;
+        padding: 10px;
+        width: 25%;
+    }
+
+section.score{
+    width: 80%;
+    margin: auto;
+}
+
+section.fixed {
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+    width: 150px;
+    padding: .5em;
+    background-color: #FAA916;
+    color: #FBFFFE;
+}
+table thead {
+    background-color: #FAA916;
+}
+table td {
+    border: 1px solid black;
+    padding: .5em;
+    width: 100px;
+    text-align: center;
+}

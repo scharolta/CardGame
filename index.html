@@ -5,80 +5,9 @@
 
     <title>Ultimate Card Game</title>
     <link rel="stylesheet" type="text/css" href="./index_files/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="./index_files/GameSS.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
-    <style>
 
-        body {
-            margin: .5em;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        h1 {
-            text-align: center;
-            margin: .5em 0;
-            font-family: 'Pacifico', cursive;
-            font-size: 50px;
-        }
-
-        ul {
-            list-style: none;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-            ul li {
-                display: inline;
-            }
-
-            ul a {
-                border: 1px solid black;
-                text-decoration: none;
-                color: black;
-                padding: 10px;
-                display: inline-block;
-                width: 200px;
-            }
-
-                ul a:hover {
-                    background-color: yellow;
-                    text-decoration: none;
-                    color: black;
-                }
-
-                ul button  {
-                    background-color: white;
-                    padding: 10px;
-                    border: 1px solid black;
-                }
-
-                ul button:hover {
-                    background-color: yellow;
-                }
-
-        main div {
-            float: left;
-            padding: 10px;
-            width: 25%;
-            color: red;
-        }
-
-        section.fixed {
-            position: fixed;
-            bottom: 100px;
-            right: 0;
-            width: 200px;
-            padding: .5em;
-            border: 1px solid black;
-        }
-
-        table td {
-            border: 1px solid black;
-            padding: .5em;
-            width: 100px;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <h1>Ultimate Card Game</h1>
@@ -94,20 +23,20 @@
     <main id="play">
         <h2>May the games begin!</h2>
         <div class="column">
-            <img src="./index_files/Card_back_05.svg.png" width="75%">
+            <img src="./index_files/Card_back_05.svg.png" width="100%">
         </div>
         <div class="column">
-            <img id="computer" src="./index_files/Card_back_05.svg.png" width="75%">
+            <img id="computer" src="./index_files/Card_back_05.svg.png" width="100%">
             <br />
             Computer's deck
         </div>
         <div class="column">
-            <img id="player" src="./index_files/English_pattern_10_of_diamonds.svg.png" width="75%">
+            <img id="player" src="./index_files/English_pattern_10_of_diamonds.svg.png" width="100%">
             <br />
             Your deck
         </div>
         <div class="column">
-            <img id="discard" src="./index_files/English_pattern_10_of_hearts.svg.png" width="75%">
+            <img id="discard" src="./index_files/English_pattern_10_of_hearts.svg.png" width="100%">
             <br />
             Discard pile
         </div>
@@ -119,8 +48,8 @@
             <li><button>Save</button></li>
         </ul>
     </section>
-    <section>
-        <h2 id="saved">Saved Games</h2>
+    <section class="score">
+        <h2>Saved Games</h2>
         <table>
             <thead>
                 <tr>
@@ -147,8 +76,9 @@
         </table>
     </section>
     <section class="fixed">
-        <time>50 s</time>
+        <time id="stopWatch">00:00:00</time>
         <div>500 points</div>
     </section>
+    <!-- <script src="index_files/timer.js"></script> -->
 </body>
 </html>
