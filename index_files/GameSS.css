@@ -45,7 +45,8 @@ ul {
         color: #FBFFFE;
         border: none;
         display: inline-block;
-        width: 200px;
+        width: 25%;
+        margin: auto;
     }
 
         ul button:hover {
