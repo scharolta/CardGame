@@ -43,7 +43,8 @@
     <section class="buttons">
         <ul>
             <li><button>New Game</button></li>
-            <li><button>Pause</button></li>
+            <li><button id="pause" onclick="pause()">Pause</button></li>
+            <li><button id="restart" onclick="restart()">Restart</button></li>
             <li><button>Save</button></li>
         </ul>
     </section>
@@ -75,10 +76,10 @@
         </table>
     </section>
     <section class="fixed">
-        <time id="stopWatch">00:00:00</time>
-       <div> Score: <span id="scoring">0</span> </div>
+        <time id="stopwatch">00:00:00</time>
+        <div> Score: <span id="score">0</span> </div>
     </section>
-    <!-- <script src="index_files/timer.js"></script> -->
+     <script src="index_files/timer.js"></script> 
     <script src="index_files/game.js"></script>
 </body>
 </html>

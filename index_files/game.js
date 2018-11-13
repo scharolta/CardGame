@@ -1,4 +1,3 @@
-// JavaScript source code
 function playingGame() {
     let playerPoints = 0;
     let cards = dealCards(createRandom());
@@ -6,22 +5,34 @@ function playingGame() {
         let computerCard = draw(cards.computerCards);
         let playerCard = draw(cards.playerCards);
         playerPoints += scoring(computerCard, playerCard);
-        document.getElementById("scoring").innerHTML = playerPoints;
+        document.getElementById("score").innerHTML = playerPoints;
     }
     return playerPoints;
 }
 
 function createRandom() {
     let values = "A234567890JQK";
-    let suit = "SDCH";
+    let suits = "SDCH";
     let cards = [];
-    for (i = 0; i < 52; i++) {
-        let rndValue = values[Math.floor(Math.random() * values.length)];
-        let rndSuit = suit[Math.floor(Math.random() * suit.length)];
-        cards.push(rndValue + rndSuit);
+    for (var i = 0; i < values.length; i++) {
+        for (var j = 0; j < suits.length; j++) {
+            cards.push(values[i] + suits[j]);
+        }
     }
-    return cards;
+    return shuffle(cards);
 }
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
 
 function dealCards(cards) {
     let halv = cards.length / 2;
