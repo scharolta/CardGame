@@ -37,3 +37,5 @@ function restart() {
 }
 
 startWatch();
+document.getElementById("restart").addEventListener("click", restart);
+document.getElementById("pause").addEventListener("click", pause);

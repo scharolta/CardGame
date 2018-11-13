@@ -39,6 +39,7 @@ nav ul a {
     margin: 0;
     width: 200px;
     display: inline-block;
+    border-radius: 10px;
 }
 
     nav ul a:hover {
@@ -46,32 +47,41 @@ nav ul a {
         text-decoration: none;
         color: #FBFFFE;
     }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
 main {
-    padding: 170px 0 50px 0;
-    width: 100%;
-    text-align: center;
+    flex: 80%;
+    padding: 170px 0 50px 50px;
 }
 
     main div.column {
-        padding: 10px;
-        width: 20%;
+        padding: 0 10px 0 0;
+        width: 24%;
         display: inline-block;
         vertical-align: top;
     }
 
 section.buttons {
-    clear: both;
-    text-align: center;
+    flex: 20%;
+    padding-top: 210px;
+    align-content: flex-start;
 }
 
 ul button {
     background-color: #96031A;
     padding: 10px;
+    margin: 10px 0 0 0;
     color: #FBFFFE;
     border: none;
-    display: inline-block;
-    width: 15%;
-    border-radius: 10px;
+    display: block;
+    border-radius: 10px 0 0 10px;
+    flex-direction: column;
+    width: 100%;
 }
 
     ul button:hover {
@@ -90,9 +100,7 @@ ul button {
     }
 
 section.score {
-    width: 80%;
-    margin: auto;
-    padding-top: 30px 0 0 20px;
+    padding: 0 0 30px 50px;
 }
 
 section.fixed {

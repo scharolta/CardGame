@@ -20,34 +20,36 @@
         </nav>
     </header>
     <br>
-    <main id="play">
-        <div class="column">
-            <img src="./index_files/Card_back_05.svg.png" width="100%">
-        </div>
-        <div class="column">
-            <img id="computer" src="./index_files/Card_back_05.svg.png" width="100%">
-            <br />
-            Computer's deck
-        </div>
-        <div class="column">
-            <img id="player" src="./index_files/English_pattern_10_of_diamonds.svg.png" width="100%">
-            <br />
-            Your deck
-        </div>
-        <div class="column">
-            <img id="discard" src="./index_files/English_pattern_10_of_hearts.svg.png" width="100%">
-            <br />
-            Discard pile
-        </div>
-    </main>
-    <section class="buttons">
-        <ul>
-            <li><button>New Game</button></li>
-            <li><button id="pause" onclick="pause()">Pause</button></li>
-            <li><button id="restart" onclick="restart()">Restart</button></li>
-            <li><button>Save</button></li>
-        </ul>
-    </section>
+    <div class="row">
+        <main id="play">
+            <div class="column">
+                <img src="./index_files/Card_back_05.svg.png" width="100%">
+            </div>
+            <div class="column">
+                <img id="computer" src="./index_files/Card_back_05.svg.png" width="100%">
+                <br />
+                Computer's deck
+            </div>
+            <div class="column">
+                <img id="player" src="./index_files/English_pattern_10_of_diamonds.svg.png" width="100%">
+                <br />
+                Your deck
+            </div>
+            <div class="column">
+                <img id="discard" src="./index_files/English_pattern_10_of_hearts.svg.png" width="100%">
+                <br />
+                Discard pile
+            </div>
+        </main>
+        <section class="buttons">
+            <ul>
+                <li><button>New Game</button></li>
+                <li><button id="pause">Pause</button></li>
+                <li><button id="restart">Restart</button></li>
+                <li><button>Save</button></li>
+            </ul>
+        </section>
+    </div>
     <section class="score">
         <h2>Saved Games</h2>
         <table>
