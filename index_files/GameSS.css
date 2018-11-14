@@ -55,7 +55,7 @@ nav ul a {
 
 main {
     flex: 80%;
-    padding: 20px 0 50px 50px;
+    padding: 20px 0 0px 50px;
     display: none;
 }
 
@@ -122,7 +122,7 @@ section.fixed {
 }
 
 section.score {
-    padding: 0 0 30px 50px;
+    padding: 50px 0 30px 50px;
     display: none;
 }
 
@@ -138,14 +138,10 @@ table td {
     text-align: center;
 }
 
-@media screen and (max-width: 730px)
+@media screen and (max-width: 730px), screen and (max-device-width: 730px)
 {
     .row {
         flex-direction: column;
-    }
-
-    main {
-        padding-bottom: 0px;
     }
 
     section.buttons {
@@ -162,7 +158,6 @@ table td {
         border-radius: 10px 10px 10px 10px;
         flex-direction: row;
         width: 100px;
-
     }
 }
 
