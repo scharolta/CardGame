@@ -10,7 +10,6 @@ header {
     text-align: center;
     background-color: #96031A;
     color: #FBFFFE;
-    position: fixed;
     width: 100%;
     height: 150px;
     border: 0;
@@ -56,7 +55,7 @@ nav ul a {
 
 main {
     flex: 80%;
-    padding: 170px 0 50px 50px;
+    padding: 20px 0 50px 50px;
     display: none;
 }
 
@@ -76,9 +75,13 @@ main {
 
 section.buttons {
     flex: 20%;
-    padding-top: 210px;
+    padding-top: 40px;
     align-content: flex-start;
 }
+
+/*.addPadding {
+    padding-top: 100px;
+}*/
 
 ul button {
     background-color: #96031A;
@@ -134,3 +137,32 @@ table td {
     width: 100px;
     text-align: center;
 }
+
+@media screen and (max-width: 730px)
+{
+    .row {
+        flex-direction: column;
+    }
+
+    main {
+        padding-bottom: 0px;
+    }
+
+    section.buttons {
+        padding-top: 0px;
+        flex: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ul button {
+        margin-right: 20px;
+        display: inline-block;
+        border-radius: 10px 10px 10px 10px;
+        flex-direction: row;
+        width: 100px;
+
+    }
+}
+
