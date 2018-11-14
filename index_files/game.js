@@ -2,9 +2,8 @@ let gameState = {
     score: 0,
     currentCompCard: '',
     time: '',
-    gameActive: 1
+    gameActive: 0
 };
-
 
 function createRandom() {
     let values = "A234567890JQK";
@@ -46,7 +45,7 @@ function playerDraw(cards, playerDrawFunc) {
 
 function computerDraw(cards, cardDrawnFunc) {
     setTimeout(function () {
-        if (cards.length > 0) {
+        if (cards.length > 0 && gameState.gameActive) {
             let theCard = cards.pop();
             cardDrawnFunc(theCard);
             computerDraw(cards, cardDrawnFunc);
@@ -55,7 +54,9 @@ function computerDraw(cards, cardDrawnFunc) {
             stopWatch();
             gameState.time = document.getElementById("stopwatch").innerHTML;
             gameState.gameActive = 0;
-            addToTable();
+            if (!cards.length) {
+                addToTable(); //detta borde egentligen vara under save
+            }
         }
     }, 1500);
 }
@@ -68,6 +69,8 @@ function scoring(card1, card2) {
 }
 
 function playingGame() {
+    gameState.gameActive = 1;
+    startWatch();
     let cards = dealCards(createRandom());
     computerDraw(cards.computerCards, function (computerCard) {
         gameState.currentCompCard = computerCard;
@@ -79,6 +82,7 @@ function playingGame() {
 }
 
 function addToTable() {
+    document.querySelector(".score").style.display = "block";
     let table = document.getElementById("table");
     let row = table.insertRow(1);
     let cell1 = row.insertCell(0);
@@ -92,4 +96,39 @@ function addToTable() {
     cell4.innerHTML = gameState.score;
 }
 
-playingGame();
+$(document).ready(function () {
+    $("#newGame").click(function () {
+        $("main").show();
+        gameState.score = 0;
+        document.getElementById("score").innerHTML = "0";
+        minutes = 0; seconds = 0;
+        playingGame();
+    });
+
+    $("#pause").click(function () {
+        $("#pause").toggle();
+        $("#restart").toggle();
+        stopWatch();
+        gameState.gameActive = 0;
+        $("#player").off("click");
+    });
+
+    var addPlayed = function () {
+        $(".hiddenElement").addClass("showHidden");
+        setTimeout(function () {
+            $(".hiddenElement").removeClass("showHidden");
+        }, 1500)
+    };
+
+    $("#restart").click(function () {
+        $("#pause").toggle();
+        $("#restart").toggle();
+        let currentTime = document.getElementById("stopwatch").innerHTML.split(":");
+        seconds = parseInt(currentTime[1], 10);
+        minutes = parseInt(currentTime[0], 10);
+        playingGame();
+        $("#player").on("click", addPlayed);
+    });
+
+    $("#player").on("click", addPlayed);
+});

@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="./index_files/bootstrap-reboot.css">
     <link rel="stylesheet" type="text/css" href="./index_files/GameSS.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -34,6 +37,8 @@
                 <img id="player" src="./index_files/English_pattern_10_of_diamonds.svg.png" width="100%">
                 <br />
                 Your deck
+                <p class="hiddenElement">Played</p>
+
             </div>
             <div class="column">
                 <img id="discard" src="./index_files/English_pattern_10_of_hearts.svg.png" width="100%">
@@ -43,7 +48,7 @@
         </main>
         <section class="buttons">
             <ul>
-                <li><button>New Game</button></li>
+                <li><button id="newGame">New Game</button></li>
                 <li><button id="pause">Pause</button></li>
                 <li><button id="restart">Restart</button></li>
                 <li><button>Save</button></li>
@@ -68,20 +73,15 @@
                     <td>Total time</td>
                     <td>Score</td>
                 </tr>
-                <tr>
-                    <td>Name</td>
-                    <td>Date</td>
-                    <td>Total time</td>
-                    <td>Score</td>
-                </tr>
+                <!-- load from db -->
             </tbody>
         </table>
     </section>
     <section class="fixed">
-        <time id="stopwatch">00:00:00</time>
+        <time id="stopwatch">00:00</time>
         <div> Score: <span id="score">0</span> </div>
     </section>
-     <script src="index_files/timer.js"></script> 
+    <script src="index_files/timer.js"></script>
     <script src="index_files/game.js"></script>
 </body>
 </html>
