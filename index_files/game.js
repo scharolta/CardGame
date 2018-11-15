@@ -42,7 +42,7 @@ $(document).ready(function () {
         let currentTime = document.getElementById("stopwatch").innerHTML.split(":");
         seconds = parseInt(currentTime[1], 10);
         minutes = parseInt(currentTime[0], 10);
-        evaluate();
+        setUpGame(); //detta funkar inte just nu!!!!
         $("#player").on("click", addPlayed);
     });
 
@@ -69,10 +69,11 @@ function shuffleCompCard() {
         }
         else
             finishGame();
-    }, 500);
+    }, 1000);
 }
 
 function setUpGame() {
+    $("section ul").addClass("padRemove");
     $("main").show();
     gameState.gameActive = 1;
     gameState.score = 0;
@@ -88,7 +89,7 @@ function finishGame() {
     $("#computer").attr("src", "./index_files/Cardback_blue.png");
     $("#discard").attr("src", "./index_files/Cardback_red.png");
     $("#player").attr("src", "./index_files/Cardback_red.png");
-    //add of click for player card
+    //add off click for player card
 
             //if (!cards.length) {
             //    addToTable(); //detta borde egentligen vara under save
