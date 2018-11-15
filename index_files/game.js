@@ -96,6 +96,7 @@ function setPlayerCard() {
             if (drawData.remaining) {
                 currentCard = drawData.cards[0];
                 gameState.currentPlayerCard = currentCard.code;
+                $("#discard").attr("src", $("#player").attr("src"));
                 $("#player").attr("src", currentCard.image);
             }
             else

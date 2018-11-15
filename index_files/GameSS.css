@@ -66,9 +66,20 @@ main {
         vertical-align: top;
     }
 
+        main div.column:first-of-type {
+            width: 34%;
+            padding: 0 50px 0 20px;
+        }
+
+#discard {
+    opacity: .8;
+}
+
+
 .hiddenElement {
     visibility: hidden
 }
+
 .showHidden {
     visibility: visible
 }
@@ -138,8 +149,7 @@ table td {
     text-align: center;
 }
 
-@media screen and (max-width: 730px), screen and (max-device-width: 730px)
-{
+@media screen and (max-width: 730px), screen and (max-device-width: 730px) {
     .row {
         flex-direction: column;
     }
@@ -160,4 +170,3 @@ table td {
         width: 100px;
     }
 }
-
