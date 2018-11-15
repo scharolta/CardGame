@@ -85,6 +85,11 @@ function finishGame() {
     stopWatch();
     gameState.time = document.getElementById("stopwatch").innerHTML;
     gameState.gameActive = 0;
+    $("#computer").attr("src", "./index_files/Cardback_blue.png");
+    $("#discard").attr("src", "./index_files/Cardback_red.png");
+    $("#player").attr("src", "./index_files/Cardback_red.png");
+    //add of click for player card
+
             //if (!cards.length) {
             //    addToTable(); //detta borde egentligen vara under save
             //}
@@ -116,17 +121,3 @@ function evaluate() {
     document.getElementById("score").innerHTML = gameState.score;
 }
 
-function addToTable() {
-    document.querySelector(".score").style.display = "block";
-    let table = document.getElementById("table");
-    let row = table.insertRow(1);
-    let cell1 = row.insertCell(0);
-    let cell2 = row.insertCell(1);
-    let cell3 = row.insertCell(2);
-    let cell4 = row.insertCell(3);
-    let d = new Date();
-    cell1.innerHTML = "Scharolta";
-    cell2.innerHTML = d.toDateString();
-    cell3.innerHTML = gameState.time;
-    cell4.innerHTML = gameState.score;
-}

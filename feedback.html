@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Save game</title>
+    <link rel="stylesheet" type="text/css" href="./index_files/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="./index_files/GameSS.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Ultimate Card Game</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Play!</a></li>
+                <li><a href="./feedback.html">Saved Games</a></li> <!--eventually change location of this to save btn-->
+            </ul>
+        </nav>
+    </header>
+    <form>
+        <fieldset>
+            <legend>Save your game</legend>
+            <label for="nameInput">Your name:</label>
+            <input name="name" type="text" id="nameInput" placeholder="Enter your name here." required autocomplete="off"/>
+            <br />
+            <input type="submit" value="Submit" />
+        </fieldset>
+    </form>
+
+    <section class="score">
+        <h2>Saved Games</h2>
+        <table id="table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Score</td>
+                    <td><time>Total time</time></td>
+                    <td id="date"><time>Date</time></td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <script src="./index_files/form.js"></script>
+    <script src="./index_files/game.js"></script>
+</body>
+</html>

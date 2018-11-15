@@ -13,7 +13,6 @@ header {
     width: 100%;
     height: 150px;
     border: 0;
-    z-index: 10;
 }
 
 h1 {
@@ -60,15 +59,15 @@ main {
 }
 
     main div.column {
-        padding: 0 10px 0 0;
-        width: 24%;
+        padding: 0 2% 0 0;
+        width: 27%;
         display: inline-block;
         vertical-align: top;
     }
 
         main div.column:first-of-type {
-            width: 34%;
-            padding: 0 50px 0 20px;
+            width: 35%;
+            padding: 0 5% 0 5%;
         }
 
 #discard {
@@ -89,10 +88,6 @@ section.buttons {
     padding-top: 40px;
     align-content: flex-start;
 }
-
-/*.addPadding {
-    padding-top: 100px;
-}*/
 
 ul button {
     background-color: #96031A;
@@ -143,11 +138,29 @@ table thead {
 }
 
 table td {
-    border: 1px solid black;
+    border: 1px solid #1B1B1E;
     padding: .5em;
     width: 100px;
     text-align: center;
 }
+
+form {
+    padding: 40px 0 0 50px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+input[type=text] {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 2px 2px 2px 5px;
+}
+
+    input[type=text]:focus {
+        border: 1px solid black;
+    }
 
 @media screen and (max-width: 730px), screen and (max-device-width: 730px) {
     .row {
@@ -168,5 +181,25 @@ table td {
         border-radius: 10px 10px 10px 10px;
         flex-direction: row;
         width: 100px;
+    }
+}
+
+@media screen and (max-device-width: 730px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    header {
+        height: 120px;
+    }
+
+    nav ul a {
+        width: 100px;
+        padding: 0px;
+        margin: auto;
+    }
+
+    section.fixed {
+        bottom: 50px;
     }
 }
