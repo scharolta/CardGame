@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "index_files/StyleSheet1.css",
+    "inputFile": "index_files/StyleSheet1.scss"
+  },
+  {
+    "outputFile": "index_files/game.css",
+    "inputFile": "index_files/game.scss"
+  }
+]

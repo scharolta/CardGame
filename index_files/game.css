@@ -1,0 +1,157 @@
+﻿body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FBFFFE;
+  color: #1B1B1E; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+  ul li {
+    display: inline; }
+
+header {
+  text-align: center;
+  background-color: #96031A;
+  color: #FBFFFE;
+  width: 100%;
+  height: 150px;
+  margin: 0 0 3em 0; }
+  header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    text-align: center;
+    padding: 10px 0; }
+  header nav ul a {
+    text-decoration: none;
+    color: #FBFFFE;
+    padding: 10px 0;
+    margin: 0;
+    width: 200px;
+    display: inline-block;
+    border-radius: 10px; }
+  header nav ul a:hover {
+    background-color: #FAA916;
+    text-decoration: none;
+    color: #FBFFFE; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap; }
+
+main {
+  flex: 80%;
+  display: none; }
+  main div.column {
+    padding: 0 2% 0 0;
+    width: 30%;
+    display: inline-block;
+    vertical-align: top; }
+    main div.column #discard {
+      opacity: .7; }
+    main div.column .hiddenElement {
+      visibility: hidden; }
+    main div.column .showHidden {
+      visibility: visible; }
+  main div.column:first-of-type {
+    width: 36.5%;
+    padding: 0 5% 0 3.5%; }
+
+section.buttons {
+  flex: 20%;
+  padding-top: 40px;
+  align-content: flex-start; }
+  section.buttons ul {
+    padding: 0 0 0 40px; }
+    section.buttons ul button {
+      background-color: #96031A;
+      padding: 10px;
+      margin: 10px 0 0 0;
+      color: #FBFFFE;
+      border: none;
+      display: block;
+      border-radius: 10px 0 0 10px;
+      flex-direction: column;
+      width: 100%; }
+    section.buttons ul button:hover {
+      background-color: #FAA916;
+      color: #FBFFFE;
+      border: none; }
+    section.buttons ul #restart {
+      display: none;
+      background-color: #FAA916; }
+    section.buttons ul #restart:hover {
+      background-color: #96031A; }
+  section.buttons ul.padRemove {
+    padding: 0; }
+
+section.fixed {
+  position: fixed;
+  bottom: 100px;
+  right: 0;
+  width: 100px;
+  padding: .5em;
+  background-color: #FAA916;
+  color: #FBFFFE;
+  z-index: 10; }
+
+section.score {
+  padding: 0 0 30px 50px;
+  display: none; }
+  section.score table thead {
+    background-color: #FAA916; }
+  section.score table td {
+    border: 1px solid #1B1B1E;
+    padding: .5em;
+    width: 100px;
+    text-align: center; }
+
+form {
+  padding: 0 0 0 50px; }
+  form legend {
+    font-weight: bold; }
+  form #name {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 2px 2px 2px 5px; }
+  form #name:focus {
+    border: 1px solid #1B1B1E; }
+
+@media screen and (max-width: 730px), screen and (max-device-width: 730px) {
+  .row {
+    flex-direction: column; }
+  main {
+    margin: 0 5% 0 5%; }
+  section.buttons {
+    padding-top: 0px;
+    flex: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; }
+    section.buttons ul {
+      padding: 100px 0 0 0px; }
+      section.buttons ul button {
+        margin-right: 5px;
+        margin-left: 5px;
+        display: inline-block;
+        border-radius: 10px;
+        flex-direction: row;
+        width: 100px; } }
+
+@media screen and (max-device-width: 730px) {
+  body {
+    font-size: small; }
+  header {
+    height: 110px; }
+    header h1 {
+      font-size: 40px;
+      margin: 0; }
+    header nav ul a {
+      width: 100px;
+      padding: 0px;
+      margin: auto; }
+  main {
+    margin: 0; }
+  section.fixed {
+    bottom: 30px; } }
