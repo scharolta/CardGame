@@ -69,11 +69,11 @@ function shuffleCompCard() {
         }
         else
             finishGame();
-    }, 1000);
+    }, 500);
 }
 
 function setUpGame() {
-    $("section ul").addClass("padRemove");
+    $("section.buttons ul").addClass("padRemove");
     $("main").show();
     gameState.gameActive = 1;
     gameState.score = 0;
@@ -90,10 +90,6 @@ function finishGame() {
     $("#discard").attr("src", "./index_files/Cardback_red.png");
     $("#player").attr("src", "./index_files/Cardback_red.png");
     //add off click for player card
-
-            //if (!cards.length) {
-            //    addToTable(); //detta borde egentligen vara under save
-            //}
 }
 
 function setPlayerCard() {
@@ -121,4 +117,3 @@ function evaluate() {
     gameState.score += scoring(gameState.currentCompCard, gameState.currentPlayerCard);
     document.getElementById("score").innerHTML = gameState.score;
 }
-

@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -193,8 +193,8 @@ input[type=text] {
     }
 
     ul button {
-        margin-right: 10px;
-        margin-left: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
         display: inline-block;
         border-radius: 10px;
         flex-direction: row;
@@ -225,4 +225,4 @@ input[type=text] {
     section.fixed {
         bottom: 30px;
     }
-}
+}*/
