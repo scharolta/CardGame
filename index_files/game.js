@@ -1,119 +1,179 @@
-let gameState = {
-    score: 0,
-    currentCompCard: '',
-    currentPlayerCard: '',
-    time: '',
-    gameActive: 0
-};
-
-let deckId;
-const baseUrl = "https://deckofcardsapi.com/api/deck/";
-
 $(document).ready(function () {
 
-    $("#newGame").click(function () {
-        setUpGame();
-        $.getJSON(baseUrl + "new/shuffle/")
-            .done(function (data) {
-                deckId = data.deck_id;
-                setPlayerCard();
-                shuffleCompCard();
+    let deckOfCards = {
+        baseUrl: "https://deckofcardsapi.com/api/deck/",
+        newDeck: function () {
+            return $.getJSON(this.baseUrl + "new/shuffle/")
+                .done(function (newDeck) {
+                    deckOfCards.deckId = newDeck.deck_id;
+                });
+        },
+        drawCard: function () {
+            return $.getJSON(this.baseUrl + deckOfCards.deckId + "/draw/");
+        }
+    };
+
+    let game = {
+        state: { paused: false },
+        timerDelay: 250,
+
+        new: function () {
+            game.state.elapsedMs = 0;
+            game.state.score = 0;
+            game.state.over = false;
+            game.state.playerCard = undefined;
+            game.state.computerCard = undefined;
+            $("section.buttons ul").addClass("padRemove");
+            $("main").show();
+            game.updateScore();
+            if (game.state.paused) 
+                game.togglePause();
+            deckOfCards.newDeck().done(function () {
+                game.startTimer();
+                game.drawPlayerCard();
+                game.drawComputerCard();
+                game.startComputerDelay();
+            });
+        },
+
+        startTimer: function () {
+            game.killTimer();
+            game.state.timerIntervalHandle = setInterval(function () {
+                game.state.elapsedMs += game.timerDelay;
+                game.updateTimer();
+            }, game.timerDelay);
+        },
+
+        updateTimer: function () {
+            let minutes = Math.floor(game.state.elapsedMs / 60000);
+            let seconds = Math.floor((game.state.elapsedMs % 60000) / 1000);
+            let mins = (minutes < 10) ? ('0' + minutes + ':') : (minutes + ':');
+            let secs = (seconds < 10) ? ('0' + seconds) : (seconds);
+            $("#stopwatch").text(mins + secs);
+        },
+
+        killTimer: function () {
+            if (game.state.timerIntervalHandle !== undefined) {
+                clearTimeout(game.state.timerIntervalHandle);
+                game.state.timerIntervalHandle = undefined;
+            }
+        },
+
+        drawPlayerCard: function () {
+            deckOfCards.drawCard()
+                .done(function (drawData) {
+                    if (drawData.success) {
+                        let currentCard = drawData.cards[0];
+                        game.state.playerCard = currentCard.code;
+                        $("#discard").attr("src", $("#player").attr("src"));
+                        $("#player").attr("src", currentCard.image);
+                    }
+                    else
+                        game.finishGame();
+                });
+        },
+        startComputerDelay: function () {
+            game.state.computerTimeoutHandle = setTimeout(function () {
+                game.drawComputerCard();
+                game.startComputerDelay();
+            }, 500) //change to random
+        },
+
+        drawComputerCard: function () {
+            deckOfCards.drawCard().done(function (drawData) {
+                if (drawData.success) {
+                    let currentCard = drawData.cards[0];
+                    game.state.computerCard = currentCard.code;
+                    $("#computer").attr("src", currentCard.image);
+                }
+                else
+                    game.finishGame();
             })
+        },
+
+        killComputerDelay: function () {
+            if (game.state.computerTimeoutHandle !== undefined) {
+                clearTimeout(game.state.computerTimeoutHandle);
+                game.state.computerTimeoutHandle = undefined;
+            }
+        },
+
+        addPlayed: function () {
+            $(".hiddenElement").addClass("showHidden");
+            setTimeout(function () {
+                $(".hiddenElement").removeClass("showHidden");
+            }, 1500)
+        },
+
+        usePlayerCard: function () {
+            if (!game.state.over && game.state.playerCard !== undefined) {
+                console.log("clicked");
+
+                game.killComputerDelay();
+                game.addPlayed();
+                game.scoreCards();
+                game.drawComputerCard();
+                game.startComputerDelay();
+                game.drawPlayerCard();
+            }
+        },
+
+        scoreCards: function () {
+            let points = -1;
+            if (game.state.playerCard !== undefined &&
+                game.state.computerCard !== undefined) {
+                if (game.state.playerCard[0] == game.state.computerCard[0]
+                    || game.state.playerCard[1] == game.state.computerCard[1]) {
+                    points = 1;
+                }
+            }
+            game.state.score += points;
+            this.updateScore();
+        },
+
+        updateScore: function () {
+            $("#score").html(game.state.score);
+        },
+
+        togglePause: function (bool) {
+            game.state.paused = !game.state.paused;
+            $("#pause").toggle();
+            $("#restart").toggle();
+
+            if (bool) {
+                game.killComputerDelay();
+                game.killTimer();
+            }
+            else {
+                game.startComputerDelay();
+                game.startTimer();
+            }
+        },
+
+        finishGame: function () {
+            if (!game.state.over) {
+                game.state.over = true;
+                game.killTimer();
+                $("#computer").attr("src", "./index_files/Cardback_blue.png");
+                $("#discard").attr("src", "./index_files/Cardback_red.png");
+                $("#player").attr("src", "./index_files/Cardback_red.png");
+            }
+        }
+    };
+
+    $("#newGame").click(function () {
+        game.new();
     });
 
     $("#pause").click(function () {
-        $("#pause").toggle();
-        $("#restart").toggle();
-        stopWatch();
-        gameState.gameActive = 0;
-        $("#player").off("click");
+        game.togglePause(true);
     });
-
-    var addPlayed = function () {
-        $(".hiddenElement").addClass("showHidden");
-        setTimeout(function () {
-            $(".hiddenElement").removeClass("showHidden");
-        }, 1500)
-    };
 
     $("#restart").click(function () {
-        $("#pause").toggle();
-        $("#restart").toggle();
-        let currentTime = document.getElementById("stopwatch").innerHTML.split(":");
-        seconds = parseInt(currentTime[1], 10);
-        minutes = parseInt(currentTime[0], 10);
-        setUpGame(); //detta funkar inte just nu!!!!
-        $("#player").on("click", addPlayed);
+        game.togglePause(false);
     });
 
-    $("#player").on("click", function () {
-        addPlayed();
-        evaluate();
-        setPlayerCard();
+    $("#player").click(function () {
+        game.usePlayerCard();
     });
 });
-
-function shuffleCompCard() {
-    setTimeout(function () {
-        if (gameState.gameActive) {
-            $.getJSON(baseUrl + deckId + "/draw/")
-                .done(function (drawData2) {
-                    let currentCard = drawData2.cards[0];
-                    gameState.currentCompCard = currentCard.code;
-                    $("#computer").attr("src", currentCard.image);
-                    if (drawData2.remaining > 0)
-                        shuffleCompCard();
-                    else
-                        finishGame();
-                });
-        }
-        else
-            finishGame();
-    }, 500);
-}
-
-function setUpGame() {
-    $("section.buttons ul").addClass("padRemove");
-    $("main").show();
-    gameState.gameActive = 1;
-    gameState.score = 0;
-    document.getElementById("score").innerHTML = "0";
-    minutes = 0; seconds = 0;
-    startWatch();
-}
-
-function finishGame() {
-    stopWatch();
-    gameState.time = document.getElementById("stopwatch").innerHTML;
-    gameState.gameActive = 0;
-    $("#computer").attr("src", "./index_files/Cardback_blue.png");
-    $("#discard").attr("src", "./index_files/Cardback_red.png");
-    $("#player").attr("src", "./index_files/Cardback_red.png");
-    //add off click for player card
-}
-
-function setPlayerCard() {
-    $.getJSON(baseUrl + deckId + "/draw/")
-        .done(function (drawData) {
-            if (drawData.remaining) {
-                currentCard = drawData.cards[0];
-                gameState.currentPlayerCard = currentCard.code;
-                $("#discard").attr("src", $("#player").attr("src"));
-                $("#player").attr("src", currentCard.image);
-            }
-            else
-                finishGame();
-        });
-}
-
-function scoring(card1, card2) {
-    if (card1[0] == card2[0] || card1[1] == card2[1])
-        return 1;
-    else
-        return -1;
-}
-
-function evaluate() {
-    gameState.score += scoring(gameState.currentCompCard, gameState.currentPlayerCard);
-    document.getElementById("score").innerHTML = gameState.score;
-}
