@@ -26,7 +26,7 @@ $(document).ready(function () {
             $("section.buttons ul").addClass("padRemove");
             $("main").show();
             game.updateScore();
-            if (game.state.paused) 
+            if (game.state.paused)
                 game.togglePause();
             deckOfCards.newDeck().done(function () {
                 game.startTimer();
@@ -176,4 +176,15 @@ $(document).ready(function () {
     $("#player").click(function () {
         game.usePlayerCard();
     });
+
+    $("#save").click(function () {
+        if (typeof (Storage !== undefined)) {
+            sessionStorage.setItem("score", game.state.score);
+            sessionStorage.setItem("timer", $("#stopwatch").text());
+
+            location.href = './feedback.html';
+        }
+        else { alert("No saving available"); }
+    });
+
 });
