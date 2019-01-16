@@ -20,7 +20,7 @@ To run it locally you will need to
 - configure the Spotify API
 
 ##### Configure the database
-We use database tables both to authenticate the webhost and an admin role and we have tables
+We use database tables both to authenticate the webhost and an admin role and
 to keep track of our game sessions, players, songs as well as answer alternatives.
 Primarily in the answer alternatives there is scope for expansion, e.g. through different types
 of questions (year only, artist only etc.). To get started we suggest you build tables using 
