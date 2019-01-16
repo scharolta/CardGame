@@ -10,6 +10,7 @@ The game leader then plays the intro of a song and the participants guess what s
 MuQuiz eliminates all the boring and time-consuming parts like preparing songs and questions, playing the music, 
 keeping track of points, etc. so that you can focus on having fun! MuQuiz let's the game leader choose 
 how many songs that the game will consist of, the rest is handled by MuQuiz.
+
 This game was developed using primarily ASP.Net Core 2.2, Entity Framework Core and SignalR. 
 
 ### How to use?
