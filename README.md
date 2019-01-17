@@ -89,7 +89,7 @@ To achieve this: Login on the [Spotify developer page](https://developer.spotify
 
 Next, we have built a [simple application](https://github.com/nilnym/SpotifyAuthCode) to help you generate the refreshable Spotify token. We are using the authorization code flow. See the [Spotify documentation](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow) for more info.
 
-######Good luck testing and please let us know if you make our application even more fun!
+###### Good luck testing and please let us know if you make our application even more fun!
 
 ### License
 MIT © Fredik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik
