@@ -1,7 +1,7 @@
 # MuQuiz
 
 MuQuiz is a web application created as a final project at Academy, a part of Academic Work, 
-in January 2019 by [Fredik Jäderland](https://github.com/Freddeeeee), [Natalie Barbour](https://github.com/natalie-barbour), [Nils Nyman](https://github.com/nilnym) and [Scharolta Siencnik](https://github.com/scharolta).
+in January 2019 by [Fredrik Jäderland](https://github.com/Freddeeeee), [Natalie Barbour](https://github.com/natalie-barbour), [Nils Nyman](https://github.com/nilnym) and [Scharolta Siencnik](https://github.com/scharolta).
 
 ### What is Muquiz?
 MuQuiz is a web application to play the music intro game. 
