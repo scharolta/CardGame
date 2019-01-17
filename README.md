@@ -35,11 +35,11 @@ the SQL commands below and include your database connection string in the appset
 This should all be fairly straightforward and is already configured with MyIdentityContext. See the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio) for further information.
 
 ###### Create all other tables
-Replace `schema` in the commands below and add fun songs and answer alternatives. The SpotifyId is a code in the following format: `6nLvaCZFR1wEzW3sIKpsnr`.
+Replace `schema` in the commands below and add fun songs and answer alternatives (we've given you three examples). The SpotifyId is a code in the following format: `6nLvaCZFR1wEzW3sIKpsnr`.
  
 ```
 CREATE TABLE [schema].[Song] (
-    [ID]        INT           IDENTITY (1, 1) NOT NULL,
+    [ID]        INT           IDENTITY NOT NULL,
     [SpotifyID] NVARCHAR (32) NOT NULL,
     [SongName]  NVARCHAR (64) NOT NULL,
     [Artist]    NVARCHAR (64) NOT NULL,
@@ -47,8 +47,8 @@ CREATE TABLE [schema].[Song] (
 );
 
 CREATE TABLE [schema].[Question] (
-    [ID]            INT           IDENTITY (1, 1) NOT NULL,
-    [SongID]        INT           NOT NULL,
+    [ID]            INT           IDENTITY NOT NULL,
+    [SongID]        INT           REFERENCES schema.Song(ID) NOT NULL,
     [CorrectAnswer] NVARCHAR (64) NOT NULL,
     [Answer1]       NVARCHAR (64) NOT NULL,
     [Answer2]       NVARCHAR (64) NOT NULL,
@@ -57,20 +57,30 @@ CREATE TABLE [schema].[Question] (
 );
 
 CREATE TABLE [schema].[GameSession] (
-    [ID]               INT          IDENTITY (1, 1) NOT NULL,
+    [ID]               INT          IDENTITY NOT NULL,
     [GameID]           VARCHAR (8)  NOT NULL,
     [IsPlaying]        BIT          NOT NULL,
     [HostConnectionID] VARCHAR (32) NULL
 );
 
 CREATE TABLE [schema].[Player] (
-    [ID]            INT           IDENTITY (1, 1) NOT NULL,
+    [ID]            INT           IDENTITY NOT NULL,
     [Name]          NVARCHAR (32) NOT NULL,
     [ConnectionID]  VARCHAR (32)  NOT NULL,
     [Score]         INT           NOT NULL,
-    [GameSessionID] INT           NOT NULL,
+    [GameSessionID] INT           REFERENCES schema.GameSession(ID) NOT NULL,
     [AvatarCode]    VARCHAR (16)  NULL
 );
+
+INSERT INTO [schema].[Song] ([SpotifyID], [SongName], [Artist], [Year]) 
+VALUES ('3XVozq1aeqsJwpXrEZrDJ9', 'Ice Ice Baby', 'Vanilla Ice', 1989),
+       ('2yAVzRiEQooPEJ9SYx11L3', 'Blue (Da Ba Dee)', 'Eiffel 65', 1999),
+       ('5Fih0qlqrBjPIE0dFamuBr', '(What A) Wonderful World', 'Sam Cooke', 1960)
+
+INSERT INTO [schema].[Question] ([SongID], [CorrectAnswer], [Answer1], [Answer2], [Answer3], [QuestionType]) 
+VALUES (KEYINSONGTABLE, 'Vanilla Ice - Ice Ice Baby', 'Queen - Under Pressure', 'Vanilla Vice - Ice Baby', 'Queen - Pressure', 1),
+       (KEYINSONGTABLE, 'Eiffel 65 - Blue (Da Ba Dee)', 'Eiffel 66 - I''m Blue', 'Eiffel 56 - Blue', 'Eiffel 55 - I''m Blue (Da Ba Dee)', 1),
+       (KEYINSONGTABLE, 'Sam Cooke - (What A) Wonderful World', 'Ben E. King - Wonderful World', 'Bill Withers - What A Wonderful World', 'Marvin Gaye - A Wonderful World', 1)
 ```
 
 ##### Configure the Spotify Web Playback SDK
@@ -93,3 +103,4 @@ Next, we have built a [simple application](https://github.com/nilnym/SpotifyAuth
 
 ### License
 MIT © Fredrik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik
+
