@@ -1,7 +1,7 @@
 # MuQuiz
 
 MuQuiz is a web application created as a final project at Academy, a part of Academic Work, 
-in January 2019 by Fredik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik.
+in January 2019 by [Fredik Jäderland](https://github.com/Freddeeeee), [Natalie Barbour](https://github.com/natalie-barbour), [Nils Nyman](https://github.com/nilnym) and [Scharolta Siencnik](https://github.com/scharolta).
 
 ### What is Muquiz?
 MuQuiz is a web application to play the music intro game. 
@@ -92,4 +92,5 @@ Next, we have built a [simple application](https://github.com/nilnym/SpotifyAuth
 ###### Good luck testing and please let us know if you make our application even more fun!
 
 ### License
-MIT © Fredik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik
+MIT © Fredrik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik
+
