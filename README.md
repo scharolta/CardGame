@@ -3,7 +3,7 @@
 MuQuiz is a web application created as a final project at Academy, a part of Academic Work, 
 in January 2019 by [Fredrik Jäderland](https://github.com/Freddeeeee), [Natalie Barbour](https://github.com/natalie-barbour), [Nils Nyman](https://github.com/nilnym) and [Scharolta Siencnik](https://github.com/scharolta).
 
-### What is Muquiz?
+### What is MuQuiz?
 MuQuiz is a web application to play the music intro game. 
 A game leader starts a session which other players can join on their devices. 
 The game leader then plays the intro of a song and the participants guess what song is being played.
@@ -48,7 +48,7 @@ CREATE TABLE [schema].[Song] (
 
 CREATE TABLE [schema].[Question] (
     [ID]            INT           IDENTITY NOT NULL,
-    [SongID]        INT           REFERENCES schema.Song(ID) NOT NULL,
+    [SongID]        INT           REFERENCES schema.Song(ID)	NOT NULL,
     [CorrectAnswer] NVARCHAR (64) NOT NULL,
     [Answer1]       NVARCHAR (64) NOT NULL,
     [Answer2]       NVARCHAR (64) NOT NULL,
@@ -68,19 +68,19 @@ CREATE TABLE [schema].[Player] (
     [Name]          NVARCHAR (32) NOT NULL,
     [ConnectionID]  VARCHAR (32)  NOT NULL,
     [Score]         INT           NOT NULL,
-    [GameSessionID] INT           REFERENCES schema.GameSession(ID) NOT NULL,
+    [GameSessionID] INT           REFERENCES schema.GameSession(ID)	NOT NULL,
     [AvatarCode]    VARCHAR (16)  NULL
 );
 
 INSERT INTO [schema].[Song] ([SpotifyID], [SongName], [Artist], [Year]) 
 VALUES ('3XVozq1aeqsJwpXrEZrDJ9', 'Ice Ice Baby', 'Vanilla Ice', 1989),
-       ('2yAVzRiEQooPEJ9SYx11L3', 'Blue (Da Ba Dee)', 'Eiffel 65', 1999),
-       ('5Fih0qlqrBjPIE0dFamuBr', '(What A) Wonderful World', 'Sam Cooke', 1960)
+	('4h8VwCb1MTGoLKueQ1WgbD', 'Wake Me Up', 'Avicii', 2013),
+	('2TxCwUlqaOH3TIyJqGgR91', 'Mamma Mia', 'ABBA', 1975)
 
 INSERT INTO [schema].[Question] ([SongID], [CorrectAnswer], [Answer1], [Answer2], [Answer3], [QuestionType]) 
 VALUES (KEYINSONGTABLE, 'Vanilla Ice - Ice Ice Baby', 'Queen - Under Pressure', 'Vanilla Vice - Ice Baby', 'Queen - Pressure', 1),
-       (KEYINSONGTABLE, 'Eiffel 65 - Blue (Da Ba Dee)', 'Eiffel 66 - I''m Blue', 'Eiffel 56 - Blue', 'Eiffel 55 - I''m Blue (Da Ba Dee)', 1),
-       (KEYINSONGTABLE, 'Sam Cooke - (What A) Wonderful World', 'Ben E. King - Wonderful World', 'Bill Withers - What A Wonderful World', 'Marvin Gaye - A Wonderful World', 1)
+	(KEYINSONGTABLE, 'Avicii - Wake Me Up', 'Avicii - Waiting For Love', 'Avicii - Levels', 'Avicii - Hey Brother', 1),
+	(KEYINSONGTABLE, 'ABBA - Mamma Mia', 'ABBA - Dancing Queen', 'ABBA - The Winner Takes It All', 'ABBA - Waterloo', 1)
 ```
 
 ##### Configure the Spotify Web Playback SDK
@@ -103,4 +103,3 @@ Next, we have built a [simple application](https://github.com/nilnym/SpotifyAuth
 
 ### License
 MIT © Fredrik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik
-
