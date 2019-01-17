@@ -17,7 +17,7 @@ To run it locally you will need to
 - configure the database
 - configure the Spotify API
 
-*Note: You will need a Spotify Premium account.*
+*Note: You will also need a Spotify Premium account.*
 
 ##### Configure the database
 We use database tables both to authenticate the webhost and an admin role and
@@ -35,7 +35,7 @@ the SQL commands below and include your database connection string in the appset
 This should all be fairly straightforward and is already configured with MyIdentityContext. See the [Microsoft documentation] (https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio) for further information.
 
 ###### Create all other tables
-Replace `schema` in the SQL below and add fun songs and answer alternatives. The SpotifyId is a code in the following format: `6nLvaCZFR1wEzW3sIKpsnr`.
+Replace `schema` in the commands below and add fun songs and answer alternatives. The SpotifyId is a code in the following format: `6nLvaCZFR1wEzW3sIKpsnr`.
  
 ```
 CREATE TABLE [schema].[Song] (
@@ -85,12 +85,11 @@ For this application to run you will need to add the following to application.js
   }
 ```
 
-To achieve this: Login on the [Spotify developer page](https://developer.spotify.com/dashboard/) and add an application. There you will find your client ID and your client secret.
+To achieve this first login on the [Spotify developer page](https://developer.spotify.com/dashboard/) and add an application. There you will find your client ID and your client secret.
 
-Next, we have built a [simple application](https://github.com/nilnym/SpotifyAuthCode) to help you generate the refreshable Spotify token. We are using the authorization code flow. See the [Spotify documentation](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow) for more info.
+Next, we have built a [simple application](https://github.com/nilnym/SpotifyAuthCode) to help you generate the refreshable Spotify token. We are using Spotify's authorization code flow. See the [Spotify documentation](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow) for more info.
 
-###### Good luck testing and please let us know if you make our application even more fun!
+###### Good luck testing and please get in touch if you develop our code and make our project even more fun.
 
 ### License
 MIT © Fredrik Jäderland, Natalie Barbour, Nils Nyman and Scharolta Siencnik
-
