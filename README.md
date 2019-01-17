@@ -10,19 +10,19 @@ The game leader then plays the intro of a song and the participants guess what s
 MuQuiz chooses the songs and questions, plays the music and
 keeps track of points so that you can focus on having fun!
 
-This game was developed using primarily ASP.Net Core 2.2, Entity Framework Core, SignalR and the Spotify Web API. 
+This game was developed using primarily ASP.Net Core 2.2, Entity Framework Core, SignalR and the Spotify Web Playback SDK. 
 
 ### How to use?
 To run it locally you will need to
 - configure the database
-- configure the Spotify API
+- configure the Spotify Web Playback SDK
 
 *Note: You will also need a Spotify Premium account.*
 
 ##### Configure the database
 We use database tables both to authenticate the webhost and an admin role and
 to keep track of our game sessions, players, songs as well as answer alternatives.
-In the answer alternatives there is scope for expansion by using different answer types. To get started we suggest you create tables using 
+We are currently not implementing the option to enter different question types but think this could be fun to explore. To get started we suggest you create tables using 
 the SQL commands below and include your database connection string in the appsettings.json file (or as a secret) as below.
 
 ```
@@ -73,7 +73,7 @@ CREATE TABLE [schema].[Player] (
 );
 ```
 
-##### Configure the Spotify API
+##### Configure the Spotify Web Playback SDK
 For this application to run you will need to add the following to application.json (or again as a secret).
 
 ```
