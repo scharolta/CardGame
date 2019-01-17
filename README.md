@@ -32,7 +32,7 @@ the SQL commands below and include your database connection string in the appset
 ```
 
 ###### Create identity tables
-This should all be fairly straightforward and is already configured with MyIdentityContext. See the [Microsoft documentation] (https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio) for further information.
+This should all be fairly straightforward and is already configured with MyIdentityContext. See the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio) for further information.
 
 ###### Create all other tables
 Replace `schema` in the commands below and add fun songs and answer alternatives. The SpotifyId is a code in the following format: `6nLvaCZFR1wEzW3sIKpsnr`.
